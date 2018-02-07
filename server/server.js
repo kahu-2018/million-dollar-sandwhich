@@ -12,9 +12,17 @@ server.use(bodyParser.json())
 server.use(express.static(path.join(__dirname, '../public')))
 
 server.get('/api/pets', (req, res) => {
-  db('pets')
+  console.log("get pets");
+  db
+    .select('*', 'species.name as species', 'pets.name as name')
+    .from('pets')
     .join('species', 'pets.species_id', 'species.id')
     .then(pets => res.json(pets))
+})
+
+server.get('/api/species', (req, res) => {
+  db('species')
+    .then(species => res.json(species))
 })
 
 module.exports = server

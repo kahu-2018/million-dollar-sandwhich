@@ -1,7 +1,9 @@
 import {combineReducers} from 'redux'
 
-import greetings from './greetings' 
+import species from './species'
+import pets from './pets'
 
 export default combineReducers({
-  greetings
+  species,
+  pets
 })

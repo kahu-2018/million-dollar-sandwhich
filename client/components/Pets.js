@@ -7,7 +7,7 @@ function Pets ({pets}) {
   return <div>
     <h1>Pets</h1>
     {pets.map(pet => <div>
-      <Link to={`/pet/${pet.id}`}>{pet.name}</Link>
+      <Link to={`/pets/${pet.id}`}>{pet.name}</Link>
     </div>)}
   </div>
 }

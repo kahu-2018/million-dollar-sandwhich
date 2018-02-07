@@ -1,6 +1,10 @@
 import React from 'react'
-import {HashRouter as Router, Route} from 'react-router-dom'
+import {HashRouter as Router, Route, Link} from 'react-router-dom'
+
 import Pets from './Pets'
+import Pet from './Pet'
+import Species from './Species'
+import SingleSpecies from './SingleSpecies'
 
 import {connect} from 'react-redux'
 import {getPets} from '../actions/pets'
@@ -16,7 +20,15 @@ class App extends React.Component {
     return <Router>
       <div className='app-container'>
         <h1>Hello World</h1>
-        <Route exact path="/" component={Pets} />
+        <div>
+          <Link to="/pets">Pets</Link>
+          <br />
+          <Link to="/species">Species</Link>
+        </div>
+        <Route exact path="/pets" component={Pets} />
+        <Route exact path="/species" component={Species} />
+        <Route exact path="/species/:id" component={SingleSpecies} />
+        <Route exact path="/pets/:id" component={Pet} />
       </div>
     </Router>
   }

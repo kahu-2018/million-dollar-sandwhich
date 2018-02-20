@@ -10,7 +10,7 @@ server.use(bodyParser.json())
 server.use(express.static(path.join(__dirname, '../public')))
 
 // routes
-server.use('/api/', apiRoutes)
+server.use('/api', apiRoutes)
 
 // wildcard route
 server.get('*', function (req, res) {

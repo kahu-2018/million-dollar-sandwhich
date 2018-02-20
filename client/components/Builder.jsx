@@ -1,6 +1,11 @@
 import React from 'react'
 
 function Builder () {
-  return 
+  return (
   <p>hello</p>
+  )
+}
+
+module.exports = {
+  Builder: Builder
 }

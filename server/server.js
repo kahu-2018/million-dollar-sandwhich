@@ -1,28 +1,20 @@
 const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
-const cors = require('cors')
+const apiRoutes = require('./api')
 
-const db = require('./db/connection')
 const server = express()
 
-server.use(cors('*'))
-
+// middleware
 server.use(bodyParser.json())
 server.use(express.static(path.join(__dirname, '../public')))
 
-server.get('/api/pets', (req, res) => {
-  console.log("get pets");
-  db
-    .select('*', 'species.name as species', 'pets.name as name')
-    .from('pets')
-    .join('species', 'pets.species_id', 'species.id')
-    .then(pets => res.json(pets))
-})
+// routes
+server.use('/api/', apiRoutes)
 
-server.get('/api/species', (req, res) => {
-  db('species')
-    .then(species => res.json(species))
+// wildcard route
+server.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, '../public/index.html'))
 })
 
 module.exports = server

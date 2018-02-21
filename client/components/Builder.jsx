@@ -1,11 +1,19 @@
 import React from 'react'
 
-function Builder () {
+function Builder(props){ 
   return (
-  <p>hello</p>
+    
+ 
+
+  <div>
+    <ul> 
+    {props.ingredients.map(ingredient => {
+      return (<li> <button value={ingredient} onClick={(e) =>props.handleClick(e)}> {ingredient.name}</button> </li>)
+
+    })}
+    </ul>
+  </div>
   )
 }
 
-module.exports = {
-  Builder: Builder
-}
+export default Builder

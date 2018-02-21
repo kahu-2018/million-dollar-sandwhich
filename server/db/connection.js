@@ -12,6 +12,11 @@ function getIngredientsByType (type, testDb) {
   return db('ingredients').select().where('type', type)
 }
 
+function getSandwich (testDb) {
+  const db = testDb || connection
+  return db('join')
+}
+
 module.exports = {
   getIngredients,
   getIngredientsByType,
